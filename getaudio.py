@@ -12,7 +12,7 @@ def prepare_audio():
     Media = Instance.media_new(playurl)
     Media.get_mrl()
     player.set_media(Media)
-    player.audio_set_volume(80)
+    player.audio_set_volume(77)
     player.play()
 
 
