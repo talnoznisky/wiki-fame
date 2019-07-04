@@ -5,3 +5,12 @@
 
 
 Play this in the background https://www.youtube.com/watch?v=xy9r0vhOVpk
+
+
+Dependencies:
+pafy
+vlc
+requests
+wikipedia
+pyttsx3
+BeautifulSoup
