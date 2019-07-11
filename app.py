@@ -34,8 +34,6 @@ def outro():
     Have a splendid evening.
     """
     play_audio(text)
-    text = ""
-    play_audio(text)
 
 def get_data():
     url = 'http://www.wikitrends.net/'
