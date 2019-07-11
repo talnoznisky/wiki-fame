@@ -11,17 +11,35 @@ data = []
 Instance = vlc.Instance()
 player = Instance.media_player_new()
 
-def intro():
-    text = "thank you for your attention. blah blah blah.blah blah blah. blah blah blah. blah blah blah. blah blah blah."
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
+def play_audio(text):
+        engine = pyttsx3.init()
+        engine.say(text)
+        engine.runAndWait()
 
+def intro():
+    text = """
+    good evening. this is a prelude to hold your attention
+    while I download a list of the most viewed wikipedia
+    articles from the last hour. Then I will attach some categorical definitions
+    associated with each topic. I am hard at work on this task as we speak.
+    And once I am done compiling that information I will quote unquote sing it to you.
+    I will commence my song now.
+    """
+    play_audio(text)
+
+def outro():
+    text = """
+    Oops! I got carried away and overran my musical framing device.
+    Or did I? You decide. And whatever you choose, I am thankful for your audience.
+    Have a splendid evening.
+    """
+    play_audio(text)
+    text = ""
+    play_audio(text)
 
 def get_data():
     url = 'http://www.wikitrends.net/'
     soup = BeautifulSoup(requests.get(url).content)
-
     # scrape topics from wikitrends
     for d in soup.findAll('div', {'class':'col-md-7 col-xs-5'}):
         for b in d.findAll('b'):
@@ -42,6 +60,7 @@ def get_data():
 
 def get_video():
     url = "https://www.youtube.com/watch?v=xy9r0vhOVpk"
+    # url = "https://www.youtube.com/watch?v=kjI-JaRWG7s"
     video = pafy.new(url)
     best = video.getbest()
     playurl = best.url
@@ -54,7 +73,7 @@ def play():
     player.play()
     for i in data:
         if player.get_state() != 6:
-            text = ('The topic is {topic} and its categories are {cats}'.format(topic=i[0],cats=i[1]))
+            text = ('The topic is {} and its categories are {}'.format(i[0],i[1]))
             engine = pyttsx3.init()
             engine.say(text)
             engine.runAndWait()
@@ -67,3 +86,4 @@ t2.start()
 
 intro()
 play()
+outro()
