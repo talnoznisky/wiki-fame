@@ -143,7 +143,7 @@ soupsieve==1.7.3
 text-unidecode==1.2
 tqdm==4.31.1
 urllib3==1.24.2
-Werkzeug==0.15.1
+Werkzeug==0.15.3
 wikipedia==1.4.0
 youtube-dl==2019.7.2
 zope.interface==4.6.0
